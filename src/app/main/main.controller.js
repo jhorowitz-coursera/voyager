@@ -63,4 +63,10 @@ angular.module('voyager')
       });
     });
 
+    window.onmessage = function(e) {
+      var dataset = e.data;
+      Dataset.update(dataset).then(function() {
+        Config.updateDataset(dataset, Dataset.type);
+      });
+    };
   });
